@@ -1,0 +1,23 @@
+.production{
+    padding: 40px 0;
+    &__cont{
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+    }
+    &__title{
+        max-width: 359px;
+    }
+    &__desc{
+        max-width: 640px;
+    }
+}
+
+@media (max-width: 973px) {
+    .production{
+        &__cont{
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+}

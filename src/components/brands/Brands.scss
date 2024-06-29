@@ -1,0 +1,21 @@
+.catalog{
+    &__top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 25px;
+        &-btns{
+            display: flex;
+            gap: 10px;
+        }
+    }
+    &__button{
+        padding: 10px 15px;
+    }
+}
+
+.mySwiper-brands{
+    img{
+        width: 100%;
+    }
+}

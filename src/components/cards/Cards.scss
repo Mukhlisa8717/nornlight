@@ -1,0 +1,129 @@
+.cards__wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.card {
+    border: 1px solid rgb(194, 194, 194);
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+    &__img{
+        position: relative;
+        button{
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 2;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            border-radius: 50%;
+            font-size: 18px;
+            outline: none;
+            border: 1px solid;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+        img{
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+        }
+    }
+    &__content{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
+        h2 {
+            color: rgb(69, 69, 69);
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 110%;
+            min-height: 44px;
+        }
+        &-bottom{
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            padding-top: 10px;
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px 20px;
+                font-size: 20px;
+                cursor: pointer;
+                border-radius: 30px;
+                border: none;
+                color: white;
+                background-color: rgba(69, 69, 69, 1);
+            }
+        }
+    }
+    &__price{
+        display: flex;
+        flex-direction: column;
+        padding-top: 10px;
+        p{
+            padding: 0;
+            color: black;
+            font-weight: 700;
+            font-size: 20px;
+        }
+        span{
+            color: grey;
+            font-weight: 500;
+            font-size: 16px;
+            text-decoration: line-through;
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    .cards__wrapper{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 400px) {
+    .card__img{
+        img {
+            height: 180px;
+            width: 100%;
+        }
+        button{
+            font-size: 14px;
+            padding: 8px;
+            top: 10px;
+            right: 10px;
+        }
+    }
+
+    .card__content{
+        h2{
+            font-size: 15px;
+        }
+        &-bottom{
+            button {
+                font-size: 13px;
+                padding: 5px 10px;
+            }
+        }
+    }
+
+    .card__price{
+        span {
+            font-size: 12px;
+        }
+        p{
+            font-size: 13px;
+        }
+    }
+}
