@@ -68,6 +68,18 @@ a{
     background: rgb(69, 69, 69);
 }
 
+//breadcumb
+.breadcumb{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    a{
+      color: gray;
+    }
+}
+
 
 //responsive
 @media (max-width: 896px) {
