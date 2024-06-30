@@ -68,6 +68,25 @@ a{
     background: rgb(69, 69, 69);
 }
 
+//lenght container
+.length__cont{
+  position: relative;
+  padding-bottom: 15px;
+  span{
+    position: absolute;
+    top: 0;
+    background: rgb(198, 60, 60);
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+  }
+}
+
 //breadcumb
 .breadcumb{
     display: flex;

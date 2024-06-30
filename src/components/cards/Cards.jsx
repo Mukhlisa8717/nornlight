@@ -10,6 +10,7 @@ import "swiper/css";
 import "swiper/css/effect-cube";
 import "swiper/css/pagination";
 import { toggleWishlist } from "../../context/slices/wishlistSlice";
+import { addToCart } from "../../context/slices/cartSlice";
 
 const Cards = ({ data }) => {
   const dispatch = useDispatch();
@@ -20,26 +21,28 @@ const Cards = ({ data }) => {
       {data?.map((el) => (
         <div key={el.id} className="card">
           <div className="card__img">
-            <Swiper
-              loop={true}
-              effect={"cube"}
-              grabCursor={true}
-              cubeEffect={{
-                shadow: true,
-                slideShadows: true,
-                shadowOffset: 20,
-                shadowScale: 0,
-              }}
-              pagination={{ clickable: true }}
-              modules={[EffectCube]}
-              className="mySwiper-card"
-            >
-              {el.url.map((imgUrl, idx) => (
-                <SwiperSlide key={idx}>
-                  <img src={imgUrl} alt={`Slide ${idx}`} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            <Link to={`/product/${el.id}`}>
+              <Swiper
+                loop={true}
+                effect={"cube"}
+                grabCursor={true}
+                cubeEffect={{
+                  shadow: true,
+                  slideShadows: true,
+                  shadowOffset: 20,
+                  shadowScale: 0,
+                }}
+                pagination={{ clickable: true }}
+                modules={[EffectCube]}
+                className="mySwiper-card"
+              >
+                {el.url.map((imgUrl, idx) => (
+                  <SwiperSlide key={idx}>
+                    <img src={imgUrl} alt={`Slide ${idx}`} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </Link>
             <button onClick={() => dispatch(toggleWishlist(el))}>
               {wishList.some((s) => s.id === el.id) ? (
                 <FaHeart />
@@ -53,12 +56,12 @@ const Cards = ({ data }) => {
               <h2>{el.title}</h2>
             </Link>
             <div className="card__content-bottom">
-              <Link to={`/product/${el.id}`}>
-                <div className="card__price">
+              <div className="card__price">
+                <Link to={`/product/${el.id}`}>
                   <span>{el.oldPrice}</span>
                   <p>{el.price} 000 ₽</p>
-                </div>
-              </Link>
+                </Link>
+              </div>
               <button onClick={() => dispatch(addToCart(el))}>
                 <MdShoppingCart />
               </button>

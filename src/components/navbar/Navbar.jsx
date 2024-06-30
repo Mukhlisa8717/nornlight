@@ -68,7 +68,7 @@ const Navbar = () => {
               </NavLink>
             </div>
           </div>
-          <NavLink to={"/category"}>
+          <NavLink to={"/catalog"}>
             <button className="navbar__main-category">
               <HiBars3CenterLeft size={25} />
               Каталог

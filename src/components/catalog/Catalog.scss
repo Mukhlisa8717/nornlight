@@ -18,6 +18,9 @@
             justify-content: space-between;
         }
     }
+    &__page-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
     &__item-content {
         display: flex;
         flex-direction: column;
@@ -135,6 +138,9 @@
     }
     .catalog__list{
         display: none;
+    }
+    .catalog__page-list{
+        display: grid;
     }
     .link-button{
         display: none;

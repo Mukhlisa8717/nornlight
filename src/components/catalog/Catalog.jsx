@@ -37,7 +37,11 @@ const Catalog = () => {
             </Link>
           )}
         </div>
-        <div className="catalog__list">
+        <div
+          className={
+            isCatalogPage ? "catalog__list catalog__page-list" : "catalog__list"
+          }
+        >
           {categoriesToDisplay?.map((el) => (
             <div key={el.id} className="catalog__list-item">
               <div className="catalog__item-content">

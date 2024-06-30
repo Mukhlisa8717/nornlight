@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 export const cartSlice = createSlice({
   name: "cart",
@@ -10,6 +11,10 @@ export const cartSlice = createSlice({
       let index = state.value.findIndex((el) => el.id === action.payload.id);
       if (index < 0) {
         state.value = [...state.value, { ...action.payload, quantity: 1 }];
+        toast.success("Добавлено в корзину");
+      } else if (state.value[index].quantity === 1) {
+        state.value = state.value.filter((el) => el.id !== action.payload.id);
+        toast.error("Удалено из корзины");
       } else {
         state.value[index].quantity += 1;
       }

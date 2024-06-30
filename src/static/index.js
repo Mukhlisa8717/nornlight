@@ -85,6 +85,12 @@ export const CATALOG_CARDS = [
     img: catalogImg11,
     price: 490,
   },
+  {
+    id: 12,
+    title: "Люстры",
+    img: catalogImg,
+    price: 540,
+  },
 ];
 
 export const WHY_US_CARDS = [
