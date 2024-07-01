@@ -11,6 +11,11 @@ import CatalogPage from "./pages/catalog/CatalogPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Basket from "./pages/basket/Basket";
+import About from "./pages/about/About";
+import ShoppingPaymet from "./pages/shoppingPaymet/ShoppingPaymet";
+import Return from "./pages/return/Return";
+import Garant from "./pages/garant/Garant";
+import Contact from "./pages/contact/Contact";
 
 function App() {
   return (
@@ -24,6 +29,11 @@ function App() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/catalog" element={<CatalogPage />} />
         <Route path="/cart" element={<Basket />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/shopping-paymet" element={<ShoppingPaymet />} />
+        <Route path="/return" element={<Return />} />
+        <Route path="/garant" element={<Garant />} />
+        <Route path="/contacts" element={<Contact />} />
       </Routes>
       <Footer />
       <ToastContainer />

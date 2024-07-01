@@ -5,6 +5,8 @@ import Empty from "../../components/empty/Empty";
 import Checkout from "../../components/checkout/Checkout";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { decCart, incCart, removeFromCart } from "../../context/slices/cartSlice";
+import { Link } from "react-router-dom";
+import { IoIosArrowForward } from "react-icons/io";
 
 const Basket = () => {
   const dispatch = useDispatch();
@@ -31,6 +33,13 @@ const Basket = () => {
     <main>
       <section className="cart">
         <div className="container">
+          <div className="breadcumb">
+            <Link to={"/"}>
+              <p>Главная</p>
+            </Link>
+            <IoIosArrowForward />
+            <p>Корзина</p>
+          </div>
           {cart.length ? (
             <>
               <div className="length__cont">
