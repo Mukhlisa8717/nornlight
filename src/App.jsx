@@ -16,6 +16,7 @@ import ShoppingPaymet from "./pages/shoppingPaymet/ShoppingPaymet";
 import Return from "./pages/return/Return";
 import Garant from "./pages/garant/Garant";
 import Contact from "./pages/contact/Contact";
+import NotFound from "./pages/notFound/NotFound";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/return" element={<Return />} />
         <Route path="/garant" element={<Garant />} />
         <Route path="/contacts" element={<Contact />} />
+        <Route path="/not-found" element={<NotFound />} />
       </Routes>
       <Footer />
       <ToastContainer />

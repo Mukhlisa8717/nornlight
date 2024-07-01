@@ -113,7 +113,7 @@ const Navbar = () => {
               <FaRegHeart size={20} />
               Избранное
             </NavLink>
-            <NavLink to={"/comparison"}>
+            <NavLink to={"/not-found"}>
               <LuBarChart size={21} />
               Сравнение
             </NavLink>

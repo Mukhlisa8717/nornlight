@@ -1,0 +1,24 @@
+.not-found{
+    padding: 40px 0;
+    height: 100vh;
+    &__cont{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 38px;
+        padding-top: 40px;
+        img{
+            width: 100%;
+            max-width: 801px;
+        }
+        button{
+            border-radius: 100px;
+            background: rgb(69, 69, 69);
+            padding: 14px 62px;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+        }
+    }
+}
