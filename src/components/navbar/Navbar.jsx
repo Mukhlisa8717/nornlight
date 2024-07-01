@@ -8,10 +8,12 @@ import { FaRegHeart } from "react-icons/fa";
 import { LuBarChart } from "react-icons/lu";
 import { FiShoppingCart } from "react-icons/fi";
 import { useGetProductsQuery } from "../../context/api/productApi";
+import { IoMdClose } from "react-icons/io";
 
 const Navbar = () => {
   const [searchValue, setSearchValue] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
   const { data } = useGetProductsQuery();
   const location = useLocation();
 
@@ -28,8 +30,17 @@ const Navbar = () => {
   }, [searchValue, data]);
 
   useEffect(() => {
-    setSearchValue(""); 
+    setSearchValue("");
+    setIsOpen(false); 
   }, [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+  }, [isOpen]);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <header>
@@ -51,8 +62,12 @@ const Navbar = () => {
         <nav className="navbar__main">
           <div className="navbar__main-resp">
             <div className="navbar__main-resp-left">
-              <button className="navbar__main-bar">
-                <HiBars3BottomRight size={30} />
+              <button className="navbar__main-bar" onClick={toggleMenu}>
+                {isOpen ? (
+                  <IoMdClose size={30} />
+                ) : (
+                  <HiBars3BottomRight size={30} />
+                )}
               </button>
               <NavLink to={"/"} className="navbar__main-logo">
                 <img src={logo} alt="Logo" />
@@ -67,6 +82,36 @@ const Navbar = () => {
                 <FiShoppingCart size={21} />
               </NavLink>
             </div>
+            {isOpen && (
+              <div className="navbar__main-resp-menu">
+                <ul>
+                  <li>
+                    <NavLink to={"/about"}>О компании</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to={"/shopping-paymet"}>Доставка и оплата</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to={"/return"}>Возврат</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to={"/garant"}>Гарантии</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to={"/contacts"}>Контакты</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to={"/blog"}>Блог</NavLink>
+                  </li>
+                </ul>
+                <NavLink to={"/catalog"}>
+                  <button>
+                    <HiBars3BottomRight size={30} />
+                    Каталог
+                  </button>
+                </NavLink>
+              </div>
+            )}
           </div>
           <NavLink to={"/catalog"}>
             <button className="navbar__main-category">
@@ -92,7 +137,7 @@ const Navbar = () => {
                   filteredData.slice(0, 5).map((el) => (
                     <li key={el.id} className="search__result">
                       <Link to={`/product/${el.id}`}>
-                      <img src={el.url[0]} alt="" />
+                        <img src={el.url[0]} alt="" />
                         <p>{el.title}</p>
                       </Link>
                     </li>
@@ -123,6 +168,7 @@ const Navbar = () => {
             </NavLink>
           </div>
         </nav>
+        {isOpen && <div className="overlay" onClick={toggleMenu}></div>}
       </div>
     </header>
   );

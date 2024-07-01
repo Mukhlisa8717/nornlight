@@ -56,6 +56,7 @@ header{
         align-items: center;
         justify-content: space-between;
         gap: 20px;
+        position: relative;
         &-left{
             display: flex;
             align-items: center;
@@ -67,6 +68,40 @@ header{
             gap: 26px;
             a{
                 color: #454545;
+            }
+        }
+        &-menu{
+            position: absolute;
+            background: #fff;
+            top: 50px;
+            width: 100%;
+            z-index: 100;
+            ul{
+                li{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    opacity: 0.5;
+                    padding: 15px 0;
+                    border-bottom: 1px solid;
+                    a{
+                        color: black;
+                    }
+                }
+            }
+            button{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                width: 100%;
+                border-radius: 100px;
+                background: rgb(69, 69, 69);
+                border: none;
+                cursor: pointer;
+                color: #fff;
+                padding: 14px;
+                margin: 42px 0;
             }
         }
     }
@@ -193,6 +228,25 @@ input[type="search"] {
         display: none;
     }
 }
+
+.overlay {
+  position: fixed;
+  top: 526px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 999; 
+}
+
+body {
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+
+
 
 @media (max-width: 896px) {
     header{
