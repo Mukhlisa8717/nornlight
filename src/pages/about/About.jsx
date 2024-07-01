@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import "./About.scss";
+import Blog from "../../components/blog/Blog";
+import Brands from "../../components/brands/Brands";
 
 const About = () => {
   useEffect(() => {
@@ -64,6 +66,8 @@ const About = () => {
               </p>
             </div>
           </div>
+          <Brands />
+          <Blog />
         </div>
       </section>
     </main>
