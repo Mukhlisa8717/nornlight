@@ -61,7 +61,7 @@ const Cards = ({ data }) => {
               <div className="card__price">
                 <Link to={`/product/${el.id}`}>
                   <span>{el.oldPrice}</span>
-                  <p>{el.price} 000 ₽</p>
+                  <p>{el.price} ₽</p>
                 </Link>
               </div>
               <button onClick={() => dispatch(addToCart(el))}>
