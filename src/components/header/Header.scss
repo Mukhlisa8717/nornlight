@@ -11,6 +11,16 @@ header{
     }
 }
 
+.shrink{
+    .navbar__top{
+        display: none;
+        padding: 0;
+    }
+    .navbar__main{
+        padding: 5px 0;
+    }
+}
+
 
 .navbar__top{
     display: flex;
@@ -51,6 +61,7 @@ header{
     justify-content: space-between;
     padding: 20px 0;
     gap: 12px;
+    transition: 1s;
     &-resp{
         display: flex;
         align-items: center;

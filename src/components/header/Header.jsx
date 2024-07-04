@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Navbar.scss";
+import "./Header.scss";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "/logo.svg";
 import { HiBars3BottomRight, HiBars3CenterLeft } from "react-icons/hi2";
@@ -10,15 +10,24 @@ import { FiShoppingCart } from "react-icons/fi";
 import { useGetProductsQuery } from "../../context/api/productApi";
 import { IoMdClose } from "react-icons/io";
 
-const Navbar = () => {
+const Header = () => {
   const { pathname } = useLocation();
   if (pathname.includes("/login") || pathname.includes("/admin")) return <></>;
 
+  let [shrink, setShrink] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const { data } = useGetProductsQuery();
   const location = useLocation();
+
+   window.addEventListener("scroll", () => {
+     if (window.scrollY > 200) {
+       setShrink(true);
+     } else {
+       setShrink(false);
+     }
+   });
 
   useEffect(() => {
     if (data) {
@@ -46,7 +55,7 @@ const Navbar = () => {
   };
 
   return (
-    <header>
+    <header className={`header ${shrink ? "shrink" : ""}`}>
       <div className="container">
         <nav className="navbar__top">
           <div className="navbar__top-menu">
@@ -177,4 +186,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;
