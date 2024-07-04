@@ -11,10 +11,12 @@ import "swiper/css/effect-cube";
 import "swiper/css/pagination";
 import { toggleWishlist } from "../../context/slices/wishlistSlice";
 import { addToCart } from "../../context/slices/cartSlice";
+import { TbShoppingCartCheck } from "react-icons/tb";
 
 const Cards = ({ data }) => {
   const dispatch = useDispatch();
   const wishList = useSelector((state) => state.wishlist.value);
+  const cart = useSelector((state) => state.cart.value);
 
   return (
     <div className="cards__wrapper">
@@ -63,7 +65,11 @@ const Cards = ({ data }) => {
                 </Link>
               </div>
               <button onClick={() => dispatch(addToCart(el))}>
-                <MdShoppingCart />
+                {cart.some((s) => s.id === el.id) ? (
+                  <TbShoppingCartCheck />
+                ) : (
+                  <MdShoppingCart />
+                )}
               </button>
             </div>
           </div>

@@ -8,7 +8,7 @@ import { useGetCategoryQuery } from "../../context/api/categoryApi";
 import SkeletonComponent from "../skeleton/Skeleton";
 
 const Products = () => {
-  const { data: products, isFetching } = useGetProductsQuery();
+  const { data: products, isLoading } = useGetProductsQuery();
   const { data: categories } = useGetCategoryQuery();
 
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -23,6 +23,8 @@ const Products = () => {
         : products,
     [products, selectedCategory],
   );
+
+  if (isLoading) return <SkeletonComponent />;
 
   const visibleProducts = filteredProducts?.slice(0, visibleCount);
 
@@ -65,11 +67,7 @@ const Products = () => {
         </ul>
         {visibleProducts?.length > 0 ? (
           <>
-            {isFetching ? (
-              <SkeletonComponent />
-            ) : (
-              <Cards data={visibleProducts} />
-            )}
+            <Cards data={visibleProducts} />
             {visibleProducts?.length < filteredProducts?.length && (
               <div className="products__see-more">
                 <button className="link-button" onClick={handleSeeMore}>
