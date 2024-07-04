@@ -5,7 +5,13 @@ import { useParams } from "react-router-dom";
 import { useGetProductByIdQuery } from "../../context/api/productApi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Navigation } from "swiper/modules";
-import { FaOdnoklassniki, FaRegHeart, FaViber, FaVk } from "react-icons/fa6";
+import {
+  FaHeart,
+  FaOdnoklassniki,
+  FaRegHeart,
+  FaViber,
+  FaVk,
+} from "react-icons/fa6";
 import { FaTelegramPlane } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { addToCart, incCart, decCart } from "../../context/slices/cartSlice";
@@ -13,7 +19,7 @@ import { toggleWishlist } from "../../context/slices/wishlistSlice";
 
 const DetailProduct = () => {
   const dispatch = useDispatch();
-  const wishlist = useSelector((state) => state.wishlist.value);
+  const wishList = useSelector((state) => state.wishlist.value);
   const cart = useSelector((state) => state.cart.value);
   const { id } = useParams();
   const { data: product, isLoading, isError } = useGetProductByIdQuery(id);
@@ -90,7 +96,7 @@ const DetailProduct = () => {
         </div>
         <p className="detail__desc">{product.desc}</p>
         <div className="detail__right-quantity">
-          {cartItem ? (
+          {quantity > 0 ? (
             <div className="detail__right-btns">
               <button onClick={handleDecrement}>-</button>
               <p>{quantity}</p>
@@ -105,7 +111,11 @@ const DetailProduct = () => {
             className="detail__addToWishlist"
             onClick={handleToggleWishlist}
           >
-            <FaRegHeart color="#454545" />
+            {wishList.some((item) => item.id === product.id) ? (
+              <FaHeart color="#454545" />
+            ) : (
+              <FaRegHeart color="#454545" />
+            )}
           </button>
         </div>
       </div>
