@@ -10,7 +10,6 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { addToCart, incCart, decCart } from "../../context/slices/cartSlice";
 import { toggleWishlist } from "../../context/slices/wishlistSlice";
-// import Loader from '../loader/Loader'
 
 const DetailProduct = () => {
   const dispatch = useDispatch();
@@ -23,18 +22,17 @@ const DetailProduct = () => {
     return (
       <div className="loading">
         <h2>Loading...</h2>
-        {/* <Loader /> */}
       </div>
     );
   }
 
   if (isError || !product) {
-    return <div>Ошибка при загрузки товара</div>;
+    return <div>Ошибка при загрузке товара</div>;
   }
 
   const cartItem = cart.find((item) => item.id === product.id);
-  const quantity = cartItem ? cartItem.quantity : 1;
-  const totalPrice = (product.price * quantity);
+  const quantity = cartItem ? cartItem.quantity : 0;
+  const totalPrice = product.price * (cartItem ? cartItem.quantity : 1);
 
   const handleAddToCart = () => {
     dispatch(addToCart(product));
@@ -92,14 +90,17 @@ const DetailProduct = () => {
         </div>
         <p className="detail__desc">{product.desc}</p>
         <div className="detail__right-quantity">
-          <div className="detail__right-btns">
-            <button onClick={handleDecrement}>-</button>
-            <p>{quantity}</p>
-            <button onClick={handleIncrement}>+</button>
-          </div>
-          <button className="detail__addToCart" onClick={handleAddToCart}>
-            В корзину
-          </button>
+          {cartItem ? (
+            <div className="detail__right-btns">
+              <button onClick={handleDecrement}>-</button>
+              <p>{quantity}</p>
+              <button onClick={handleIncrement}>+</button>
+            </div>
+          ) : (
+            <button className="detail__addToCart" onClick={handleAddToCart}>
+              В корзину
+            </button>
+          )}
           <button
             className="detail__addToWishlist"
             onClick={handleToggleWishlist}
