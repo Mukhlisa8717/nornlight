@@ -1,11 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import logo from '/logo.svg'
-import paymetImg from '../../assets/paymetImg.svg'
-import { FaFacebookF, FaInstagram, FaVk } from 'react-icons/fa6';
-import './Footer.scss'
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import logo from "/logo.svg";
+import paymetImg from "../../assets/paymetImg.svg";
+import { FaFacebookF, FaInstagram, FaVk } from "react-icons/fa6";
+import "./Footer.scss";
 
 const Footer = () => {
+  const { pathname } = useLocation();
+  if (pathname.includes("/login") || pathname.includes("/admin")) return <></>;
   return (
     <footer className="footer">
       <div className="container">
@@ -77,4 +79,4 @@ const Footer = () => {
     </footer>
   );
 };
-export default Footer
+export default Footer;

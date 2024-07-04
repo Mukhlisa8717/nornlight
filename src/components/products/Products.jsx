@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 import { GoArrowRight } from "react-icons/go";
 import Cards from "../cards/Cards";
 import { useGetCategoryQuery } from "../../context/api/categoryApi";
+import SkeletonComponent from "../skeleton/Skeleton";
 
 const Products = () => {
-  const { data: products } = useGetProductsQuery();
+  const { data: products, isFetching } = useGetProductsQuery();
   const { data: categories } = useGetCategoryQuery();
 
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -27,11 +28,11 @@ const Products = () => {
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
-    setVisibleCount(8); 
+    setVisibleCount(8);
   };
 
   const handleSeeMore = () => {
-    setVisibleCount((prevCount) => prevCount + 8); 
+    setVisibleCount((prevCount) => prevCount + 8);
   };
 
   return (
@@ -64,7 +65,11 @@ const Products = () => {
         </ul>
         {visibleProducts?.length > 0 ? (
           <>
-            <Cards data={visibleProducts} />
+            {isFetching ? (
+              <SkeletonComponent />
+            ) : (
+              <Cards data={visibleProducts} />
+            )}
             {visibleProducts?.length < filteredProducts?.length && (
               <div className="products__see-more">
                 <button className="link-button" onClick={handleSeeMore}>

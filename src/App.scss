@@ -1,3 +1,8 @@
+main{
+  margin-top: 128px;
+}
+
+//container
 .container {
   width: 100%;
   max-width: 1340px;
@@ -7,9 +12,6 @@
   padding-right: 20px;
 }
 
-main{
-  margin-top: 128px;
-}
 
 //texts
 .title{
@@ -66,6 +68,63 @@ a{
 .response__btn:hover{
     color: #fff;
     background: rgb(69, 69, 69);
+}
+
+//manage items
+.manage__btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  button {
+    padding: 5px 16px;
+    border-radius: 100px;
+    border: 1px solid rgb(69, 69, 69);
+    cursor: pointer;
+  }
+
+  .edit__btn {
+    background: none;
+  }
+
+  .delete__btn {
+    background: rgb(69, 69, 69);
+    color: white;
+  }
+}
+
+.manage__cont{
+  position: relative;
+  padding: 20px 10px;
+  &-cancel{
+    position: absolute;
+    top: -25px;
+    right: -22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgb(192, 0, 0);
+  }
+}
+
+.manage__delete {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: end;
+
+  &-btns {
+    display: flex;
+    gap: 5px;
+
+    button {
+      padding: 6px;
+      border-radius: 5px;
+      border: 1px solid rgb(69, 69, 69);
+      color: rgb(69, 69, 69);
+      font-weight: 600;
+    }
+  }
 }
 
 //lenght container

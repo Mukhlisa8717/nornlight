@@ -1,0 +1,33 @@
+.sidebar{
+    width: 350px;
+    background: #454545;
+    height: 100vh;
+    padding: 30px 27px;
+    position: fixed;
+    &__title{
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #fff;
+        h2{
+            color: rgb(255, 255, 255);
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 38px;
+        }
+    }
+    &__links{
+        padding-top: 38px;
+        a{
+            display: flex;
+            color: #fff;
+            gap: 12px;
+            align-items: center;
+            padding: 8px 12px;
+        }
+        a.active{
+            background: #FFFFFF33;
+            border-radius: 8px;
+        }
+    }
+}

@@ -9,9 +9,7 @@ import Blog from "../../components/blog/Blog";
 import Production from "../../components/production/Production";
 
 const Home = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
   return (
     <main>
       <section className="hero">
