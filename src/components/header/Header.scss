@@ -1,4 +1,4 @@
-header{
+.header{
     padding: 10px 0;
     position: fixed;
     top: 0;
@@ -8,6 +8,15 @@ header{
     z-index: 100;
     a{
         text-decoration: none;
+    }
+    &__overlay {
+        position: fixed;
+        top: 526px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
     }
 }
 
@@ -238,16 +247,6 @@ input[type="search"] {
     &::-moz-clear {
         display: none;
     }
-}
-
-.overlay {
-  position: fixed;
-  top: 526px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); 
-  z-index: 999; 
 }
 
 body {

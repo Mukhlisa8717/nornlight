@@ -180,7 +180,7 @@ const Header = () => {
             </NavLink>
           </div>
         </nav>
-        {isOpen && <div className="overlay" onClick={toggleMenu}></div>}
+        {isOpen && <div className="header__overlay" onClick={toggleMenu}></div>}
       </div>
     </header>
   );
